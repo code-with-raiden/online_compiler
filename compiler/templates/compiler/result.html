@@ -1,0 +1,85 @@
+{% load custom_filters %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Compiler Output</title>
+    <style>
+        /* Reset some default styles */
+        body, h1, pre, label {
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        /* Body styling */
+        body {
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-size: 16px;
+            margin: 0;
+        }
+
+        /* Container styling */
+        .container {
+            width: 80%;
+            max-width: 800px;
+            padding: 20px;
+            background-color: #111;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Button container styling */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px; /* Space between buttons */
+        }
+
+        /* Button styling */
+        .btn {
+            background-color: #555;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #666;
+        }
+
+        /* Output styling */
+        .output {
+            background-color: #222;
+            color: #fff;
+            padding: 10px;
+            border-radius: 4px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Output</h1>
+        <pre class="output">{{ output }}</pre>
+        <div class="button-container">
+            <a href="{% url 'compile_code' %}" class="btn">Write New Code</a>
+            <form method="post" action="{% url 'compile_code' %}">
+                {% csrf_token %}
+                <input type="hidden" name="code" value="{{ form.code.value|escape }}">
+                <input type="hidden" name="inputs" value="{{ form.inputs.value|escape }}">
+                <button type="submit" name="edit_old_code" value="1" class="btn">Edit Old Code</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

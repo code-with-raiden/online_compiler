@@ -1,0 +1,254 @@
+{% load custom_filters %}
+<!-- <!DOCTYPE html>
+
+<html>
+<head>
+    <title>Online Compiler</title>
+    <style>
+        /* Reset some default styles */
+        body, h1, pre, label {
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        /* Body styling */
+        body {
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-size: 16px;
+        }
+
+        /* Container styling */
+        .container {
+            width: 80%;
+            max-width: 800px;
+            padding: 20px;
+            background-color: #111;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Form styling */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .code-input, .inputs {
+            width: 100%;
+            height: 200px;
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #555;
+            border-radius: 4px;
+            padding: 10px;
+            box-sizing: border-box;
+            white-space: pre-wrap; /* Preserve whitespace */
+            overflow: auto; /* Allow scrolling if content overflows */
+            outline: none; /* Remove default focus outline */
+        }
+
+        .code-input:focus, .inputs:focus {
+            border-color: #666; /* Highlight border color on focus */
+        }
+
+        /* Button styling */
+        .btn {
+            background-color: #555;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #666;
+        }
+
+        /* Output styling */
+        .output {
+            background-color: #222;
+            color: #fff;
+            padding: 10px;
+            border-radius: 4px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Online Compiler</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="code">Enter your code:</label>
+                {{ form.code|add_class:"code-input" }}
+            </div>
+            <div class="form-group">
+                <label for="inputs">Enter inputs (one per line):</label>
+                {{ form.inputs|add_class:"inputs" }}
+            </div>
+            <button type="submit" class="btn">Run Code</button>
+        </form>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function handleTab(event) {
+                if (event.key === 'Tab') {
+                    event.preventDefault();
+                    var textarea = event.target;
+                    var start = textarea.selectionStart;
+                    var end = textarea.selectionEnd;
+                    var value = textarea.value;
+                    textarea.value = value.substring(0, start) + '\t' + value.substring(end);
+                    textarea.selectionStart = textarea.selectionEnd = start + 1;
+                }
+            }
+
+            document.querySelectorAll('.code-input, .inputs').forEach(function(textarea) {
+                textarea.addEventListener('keydown', handleTab);
+            });
+        });
+    </script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Compiler python </title>
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/dracula.min.css"> <!-- Example theme -->
+    <style>
+        /* Reset some default styles */
+        body, h1, pre, label {
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        /* Body styling */
+        body {
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-size: 16px;
+            margin: 0;
+        }
+
+        /* Container styling */
+        .container {
+            width: 80%;
+            max-width: 800px;
+            padding: 20px;
+            background-color: #111;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        /* CodeMirror specific styling */
+        .CodeMirror {
+            height: 200px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px; /* Space between buttons */
+        }
+
+        .btn {
+            background-color: #555;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Online Compiler</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="code">Enter your code:</label>
+                <textarea id="code-editor" name="code"># Welcome to RaidenHub 
+# a Online coding compilation platform</textarea>
+            </div>
+            <div class="form-group">
+                <label for="inputs">Enter inputs (one per line):</label>
+                <textarea id="inputs-editor" name="inputs"></textarea>
+            </div>
+            <div class="button-container">
+                <button type="submit" class="btn">Run Code</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- CodeMirror JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/python/python.min.js"></script> <!-- For Python syntax highlighting -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize CodeMirror for the code input area
+            var codeEditor = CodeMirror.fromTextArea(document.getElementById('code-editor'), {
+                mode: 'python',
+                theme: 'dracula',
+                lineNumbers: true,
+                lineWrapping: true
+            });
+
+            // Initialize CodeMirror for the inputs area (optional)
+            var inputsEditor = CodeMirror.fromTextArea(document.getElementById('inputs-editor'), {
+                mode: 'text',
+                theme: 'dracula',
+                lineNumbers: false,
+                lineWrapping: true
+            });
+
+            // Ensure CodeMirror editor content is updated with form submission
+            document.querySelector('form').addEventListener('submit', function() {
+                document.getElementById('code-editor').value = codeEditor.getValue();
+                document.getElementById('inputs-editor').value = inputsEditor.getValue();
+            });
+        });
+    </script>
+</body>
+</html>
