@@ -34,16 +34,27 @@
 # UI View
 
 ## Home Page
+![Screenshot 2024-11-29 112203](https://github.com/user-attachments/assets/7d47199f-47ce-4fdb-a876-3904ba855615)
+![Screenshot 2024-11-29 112419](https://github.com/user-attachments/assets/e9a0675c-9537-4f3f-a2b4-0334fcb2b398)
+
+## Output page
+![Screenshot 2024-11-29 112434](https://github.com/user-attachments/assets/af53121c-b39c-4756-a882-e77a3592544a)
+
+## Home page
+![Screenshot 2024-11-29 112837](https://github.com/user-attachments/assets/9fcc196e-b41d-4f59-938d-0dc3a1a1c8f2)
+
+
+## Output page
+![Screenshot 2024-11-29 112817](https://github.com/user-attachments/assets/d2fab579-28d7-4cb2-be99-fcbdb77f3fb3)
 
 
 
 
 
-## output page
 
 
 
-## Thank You
+## Thank You ❤️
 
 
 
